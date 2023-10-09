@@ -26,6 +26,7 @@ class IPRFederatedLearning(Experiment):
     """
     def __init__(self, args):
         super().__init__(args) # define many self attributes from args
+        
         self.criterion = torch.nn.CrossEntropyLoss()
         self.in_channels = 3
         
@@ -34,7 +35,7 @@ class IPRFederatedLearning(Experiment):
         self.dp = args.dp
         self.sigma = args.sigma
 
-        data_root = '/content/FedIPR/'
+        data_root = '/content/FedIPR-new/'
  
         print('==> Preparing data...')
         self.train_set, self.test_set, self.dict_users = get_data(dataset=self.dataset,
@@ -296,7 +297,7 @@ def main(args):
     logs['test_acc'] = test_acc
     logs['bp_local'] = True if args.bp_interval == 0 else False
 
-    save_dir = '/content/FedIPR/save/'
+    save_dir = '/content/FedIPR-new/save/'
 
     if not os.path.exists(save_dir + args.model_name +'/' + args.dataset):
         os.makedirs(save_dir + args.model_name +'/' + args.dataset)
